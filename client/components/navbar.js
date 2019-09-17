@@ -5,7 +5,7 @@ import {Link, Route, Switch, Redirect} from 'react-router-dom'
 import {logout} from '../store'
 import {Login, Signup} from './auth-form'
 
-const Navbar = ({handleClick, isLoggedIn, email}) => {
+const Navbar = ({handleClick, isLoggedIn, email, name}) => {
   return (
     <div>
       <h1>Eccentric Elves Arts</h1>
@@ -17,7 +17,7 @@ const Navbar = ({handleClick, isLoggedIn, email}) => {
             <a href="#" onClick={handleClick}>
               Logout
             </a>
-            <h3>Welcome, {email}</h3>
+            <h3>Welcome, {name}</h3>
           </div>
         ) : (
           <div>
@@ -43,7 +43,8 @@ const Navbar = ({handleClick, isLoggedIn, email}) => {
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
-    email: state.user.email
+    email: state.user.email,
+    name: state.user.name
   }
 }
 
