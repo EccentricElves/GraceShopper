@@ -27,7 +27,7 @@ const Navbar = ({handleClick, isLoggedIn, email, name}) => {
             <Switch>
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/login" component={Login} />
-              <Redirect to="/login" />
+              {/* <Redirect to="/login" /> */}
             </Switch>
           </div>
         )}
