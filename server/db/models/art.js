@@ -27,7 +27,7 @@ const Art = db.define('art', {
   },
   inventory: {
     type: Sequelize.INTEGER,
-    defaultValue: 0
+    defaultValue: 1
   }
 })
 
