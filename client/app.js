@@ -1,12 +1,12 @@
 import React from 'react'
 
-import {Navbar, DisconnectedArt} from './components'
+import {Navbar, AllArt} from './components'
 
 const App = () => {
   return (
     <div>
       <Navbar />
-      <DisconnectedArt />
+      <AllArt />
     </div>
   )
 }
