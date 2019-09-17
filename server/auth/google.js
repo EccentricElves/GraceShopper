@@ -31,8 +31,8 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
     googleConfig,
     (token, refreshToken, profile, done) => {
       const googleId = profile.id
-      const name = profile.displayName
       const email = profile.emails[0].value
+      const name = profile.displayName || email.split('@')[0]
 
       User.findOrCreate({
         where: {googleId},
