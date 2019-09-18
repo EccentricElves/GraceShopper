@@ -27,9 +27,14 @@ router.put('/add/:artId', async (req, res, next) => {
 
     const artItem = await Art.findOne({
       where: {
-        id: req.params.artId
+        id: req.params.artId,
+        quantity: 1
       }
     })
+
+    if (!artItem) {
+      res.sendStatus(204)
+    }
 
     order.addArt(artItem)
 
