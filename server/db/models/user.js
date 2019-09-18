@@ -36,6 +36,10 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
+  },
+  securityClearance: {
+    type: Sequelize.ENUM('user', 'admin'),
+    defaultValue: 'user'
   }
 })
 
