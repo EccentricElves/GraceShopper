@@ -1,29 +1,41 @@
 const router = require('express').Router()
 const {Order, Art} = require('../db/models')
 
-router.put('/:artId', async (req, res, next) => {
+router.get('/cart', async (req, res, next) => {
   try {
-    const newOrder = await Order.findOrCreate({
+    const order = await Order.findOne({
       where: {
-        userId: /*req.user.id*/ 1,
+        userId: req.user.id
+      },
+      include: [{model: Art}]
+    })
+
+    res.json(order)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.put('/add/:artId', async (req, res, next) => {
+  try {
+    const [order] = await Order.findOrCreate({
+      where: {
+        userId: req.user.id,
         status: 'pending'
       }
     })
-    console.dir(newOrder)
-    // set the art product of the item
+
     const artItem = await Art.findOne({
       where: {
         id: req.params.artId
       }
     })
-    console.dir(artItem)
 
-    //newOrder.addDetail(artItem)
-    artItem.addOrder(newOrder)
+    order.addArt(artItem)
 
     //user ---> order <---> item
 
-    res.json(newOrder)
+    res.json(order)
   } catch (error) {
     next(error)
   }
