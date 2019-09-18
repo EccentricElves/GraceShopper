@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {getOneArtThunk} from '../store/allArtReducer'
+import CartButton from './cartButton'
 
 class SingleArtPage extends React.Component {
   componentDidMount() {
@@ -18,7 +19,7 @@ class SingleArtPage extends React.Component {
         <div>{this.props.art.artist}</div>
         <div>{this.props.art.price}</div>
         <div>TAGS</div>
-        <button type="addToCart">ADD TO CART</button>
+        <CartButton productId={this.props.art.id} />
       </div>
     ) : (
       <div />
