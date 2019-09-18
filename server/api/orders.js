@@ -55,7 +55,7 @@ router.put('/add/:artId', async (req, res, next) => {
       res.sendStatus(204)
     }
 
-    order.addArt(artItem)
+    order.addArt(artItem, {through: {price: artItem.price}})
 
     //user ---> order <---> item
 
