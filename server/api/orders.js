@@ -16,7 +16,7 @@ router.get('/cart', async (req, res, next) => {
   }
 })
 
-router.put('/:artId', async (req, res, next) => {
+router.put('/add/:artId', async (req, res, next) => {
   try {
     const [order] = await Order.findOrCreate({
       where: {
@@ -30,11 +30,6 @@ router.put('/:artId', async (req, res, next) => {
         id: req.params.artId
       }
     })
-
-    // the concept of an Order Model having a quantity column to keep track of amt
-    // in this case we would establish the association Art.hasMany(Order)
-    // so our query for this route could search artId: req.params.artId
-    // order.update({quantity: order.quantity + 1})
 
     order.addArt(artItem)
 
