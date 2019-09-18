@@ -5,7 +5,11 @@ module.exports = router
 //GET ALL ART
 router.get('/', async (req, res, next) => {
   try {
-    const allProducts = await Art.findAll()
+    const allProducts = await Art.findAll({
+      where: {
+        inventory: 1
+      }
+    })
     res.json(allProducts)
   } catch (error) {
     next(error)
