@@ -29,3 +29,8 @@ form div {
   width: 100%;
   max-width: 800px;
 }
+
+.cartButton {
+  width: 100%;
+  max-width: 100px;
+}

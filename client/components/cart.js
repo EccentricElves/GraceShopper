@@ -1,7 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link, Redirect} from 'react-router-dom'
+import {Link, Redirect, Route} from 'react-router-dom'
 import {getCartThunk, checkOutThunk} from '../store/cartReducer'
+import thankYou from './thankYou'
 
 class DisconnectedCart extends React.Component {
   constructor() {
@@ -13,7 +14,6 @@ class DisconnectedCart extends React.Component {
   removeItem(id) {}
   handleSubmit() {
     this.props.checkOut()
-    return <Redirect to="/" />
   }
   render() {
     return this.props.cart ? (
@@ -33,9 +33,11 @@ class DisconnectedCart extends React.Component {
           })}
         </div>
         <div>
-          <button type="submit" onClick={() => this.handleSubmit()}>
-            Check Out
-          </button>
+          <Link to="/thankyou">
+            <button type="submit" onClick={() => this.handleSubmit()}>
+              Check Out
+            </button>
+          </Link>
         </div>
       </div>
     ) : (

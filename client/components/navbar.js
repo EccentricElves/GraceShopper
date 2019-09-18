@@ -5,6 +5,7 @@ import {Link, Route, Switch, Redirect} from 'react-router-dom'
 import {logout} from '../store'
 import {Login, Signup} from './auth-form'
 import Cart from './cart'
+import thankYou from './thankYou'
 
 const Navbar = ({handleClick, isLoggedIn, email, name}) => {
   return (
@@ -29,11 +30,15 @@ const Navbar = ({handleClick, isLoggedIn, email, name}) => {
             <Switch>
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/cart" component={Cart} />
-              {/* <Redirect to="/login" /> */}
             </Switch>
           </div>
         )}
+        <Link to="/cart" className="cartButton">
+          <img
+            className="cartButton"
+            src="https://static.turbosquid.com/Preview/2015/08/13__15_44_40/picter01.jpg31cab069-a003-4ef9-9721-43a9a1e5e110Zoom.jpg"
+          />
+        </Link>
       </nav>
       <hr />
     </div>
