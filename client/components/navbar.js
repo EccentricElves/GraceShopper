@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {Link, Route, Switch, Redirect} from 'react-router-dom'
 import {logout} from '../store'
 import {Login, Signup} from './auth-form'
+import Cart from './cart'
 
 const Navbar = ({handleClick, isLoggedIn, email, name}) => {
   return (
@@ -27,6 +28,7 @@ const Navbar = ({handleClick, isLoggedIn, email, name}) => {
             <Switch>
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/cart" component={Cart} />
               {/* <Redirect to="/login" /> */}
             </Switch>
           </div>

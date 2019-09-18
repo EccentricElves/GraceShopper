@@ -5,7 +5,8 @@ router.get('/cart', async (req, res, next) => {
   try {
     const order = await Order.findOne({
       where: {
-        userId: req.user.id
+        userId: 1,
+        status: 'pending'
       },
       include: [{model: Art}]
     })
@@ -15,12 +16,30 @@ router.get('/cart', async (req, res, next) => {
     next(error)
   }
 })
+router.put('/cart', async (req, res, next) => {
+  try {
+    const carts = await Order.findOne({
+      where: {
+        userId: 1,
+        status: 'pending'
+      },
+      include: [{model: Art}]
+    })
+      .then(cart => cart.update({status: 'completed'}))
+      .then(cart => {
+        cart.arts.map(art => art.update({inventory: 0}))
+      })
+    res.json(carts)
+  } catch (error) {
+    next(error)
+  }
+})
 
 router.put('/add/:artId', async (req, res, next) => {
   try {
     const [order] = await Order.findOrCreate({
       where: {
-        userId: req.user.id,
+        userId: 1,
         status: 'pending'
       }
     })
@@ -28,7 +47,7 @@ router.put('/add/:artId', async (req, res, next) => {
     const artItem = await Art.findOne({
       where: {
         id: req.params.artId,
-        quantity: 1
+        inventory: 1
       }
     })
 
