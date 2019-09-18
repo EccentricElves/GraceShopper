@@ -22,7 +22,7 @@ const Art = db.define('art', {
     type: Sequelize.ARRAY(Sequelize.STRING)
   },
   price: {
-    type: Sequelize.DECIMAL(10, 2),
+    type: Sequelize.INTEGER,
     allowNull: false
   },
   inventory: {
