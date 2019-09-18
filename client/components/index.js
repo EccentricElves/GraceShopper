@@ -6,4 +6,5 @@
 export {default as Navbar} from './navbar'
 export {default as AllArt} from './allArt'
 export {default as UserHome} from './user-home'
+export {default as SingleArtPage} from './singleArtPage'
 export {Login, Signup} from './auth-form'
