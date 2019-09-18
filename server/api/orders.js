@@ -5,12 +5,31 @@ router.get('/cart', async (req, res, next) => {
   try {
     const order = await Order.findOne({
       where: {
-        userId: req.user.id
+        userId: req.user.id,
+        status: 'pending'
       },
       include: [{model: Art}]
     })
 
     res.json(order)
+  } catch (error) {
+    next(error)
+  }
+})
+router.put('/cart', async (req, res, next) => {
+  try {
+    const carts = await Order.findOne({
+      where: {
+        userId: req.user.id,
+        status: 'pending'
+      },
+      include: [{model: Art}]
+    })
+      .then(cart => cart.update({status: 'completed'}))
+      .then(cart => {
+        cart.arts.map(art => art.update({inventory: 0}))
+      })
+    res.json(carts)
   } catch (error) {
     next(error)
   }
