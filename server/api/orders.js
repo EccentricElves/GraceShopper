@@ -5,7 +5,7 @@ router.get('/cart', async (req, res, next) => {
   try {
     const order = await Order.findOne({
       where: {
-        userId: 1,
+        userId: req.user.id,
         status: 'pending'
       },
       include: [{model: Art}]
@@ -20,7 +20,7 @@ router.put('/cart', async (req, res, next) => {
   try {
     const carts = await Order.findOne({
       where: {
-        userId: 1,
+        userId: req.user.id,
         status: 'pending'
       },
       include: [{model: Art}]
@@ -39,7 +39,7 @@ router.put('/add/:artId', async (req, res, next) => {
   try {
     const [order] = await Order.findOrCreate({
       where: {
-        userId: 1,
+        userId: req.user.id,
         status: 'pending'
       }
     })
