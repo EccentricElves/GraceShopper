@@ -1,11 +1,11 @@
 const router = require('express').Router()
 const {Order, Art} = require('../db/models')
 
-router.get('/cart/:userId', async (req, res, next) => {
+router.get('/cart', async (req, res, next) => {
   try {
     const order = await Order.findOne({
       where: {
-        userId: req.params.userId
+        userId: req.user.id
       },
       include: [{model: Art}]
     })
