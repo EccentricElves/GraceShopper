@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import CartButton from './cartButton'
 
 const SingleArt = props => {
   return (
@@ -8,9 +9,7 @@ const SingleArt = props => {
         <img className="imageUrl" src={props.art.imageURL} />
       </Link>
       <div>{props.art.name}</div>
-      <Link>
-        <div>ADD TO CART</div>
-      </Link>
+      <CartButton productId={props.art.id} />
     </div>
   )
 }
