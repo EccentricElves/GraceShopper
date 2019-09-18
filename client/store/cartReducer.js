@@ -18,7 +18,8 @@ export const getCartThunk = () => {
   return async dispatch => {
     try {
       const {data} = await Axios.get('/api/order/cart')
-      dispatch(gotCart(data))
+      if (data) dispatch(gotCart(data))
+      else dispatch(gotCart(window.localStorage.getItem('cart')))
     } catch (error) {
       console.log(error)
     }
