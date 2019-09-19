@@ -10,7 +10,7 @@ import thankYou from './thankYou'
 const Navbar = ({handleClick, isLoggedIn, email, name}) => {
   return (
     <div>
-      <h1>Eccentric Elves Arts</h1>
+      {/* <h1>Eccentric Elves Arts</h1> */}
       <nav className="navbar">
         {isLoggedIn ? (
           <div className="leftnav">
@@ -24,17 +24,20 @@ const Navbar = ({handleClick, isLoggedIn, email, name}) => {
         ) : (
           <div>
             {/* The navbar will show these links before you log in */}
-            <Link to="/">Home</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
+            <Link to="/" className="link">
+              Home
+            </Link>
+            <Link to="/login" className="link">
+              Login
+            </Link>
+            <Link to="/signup" className="link">
+              Sign Up
+            </Link>
             <Switch />
           </div>
         )}
         <Link to="/cart" className="cartButton">
-          <img
-            className="cartButton"
-            src="https://static.turbosquid.com/Preview/2015/08/13__15_44_40/picter01.jpg31cab069-a003-4ef9-9721-43a9a1e5e110Zoom.jpg"
-          />
+          <img src={import('../../public/images/cart.png')} />
         </Link>
       </nav>
       <hr />
