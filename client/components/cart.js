@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Link, Redirect, Route} from 'react-router-dom'
 import {getCartThunk, checkOutThunk} from '../store/cartReducer'
 import thankYou from './thankYou'
+import RemoveButton from './removeCartItem'
 
 class DisconnectedCart extends React.Component {
   constructor() {
@@ -27,7 +28,7 @@ class DisconnectedCart extends React.Component {
                 <div>{item.name}</div>
                 <div>{item.artist}</div>
                 <div>{item.price}</div>
-                <button>Remove</button>
+                <RemoveButton productId={item.id} />
               </ul>
             )
           })}
