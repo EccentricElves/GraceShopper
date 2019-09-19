@@ -3,6 +3,7 @@ const {Art} = require('../db/models')
 module.exports = router
 
 //GET ALL ART
+//
 router.get('/', async (req, res, next) => {
   try {
     const allProducts = await Art.findAll({
