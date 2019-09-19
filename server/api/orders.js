@@ -16,6 +16,7 @@ router.get('/cart', async (req, res, next) => {
     next(error)
   }
 })
+
 router.put('/cart', async (req, res, next) => {
   try {
     const carts = await Order.findOne({
@@ -30,6 +31,28 @@ router.put('/cart', async (req, res, next) => {
         cart.arts.map(art => art.update({inventory: 0}))
       })
     res.json(carts)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.delete('/cart/remove/:artId', async (req, res, next) => {
+  try {
+    const order = await Order.findOne({
+      where: {
+        userId: req.user.id,
+        status: 'pending'
+      }
+    })
+
+    const artToRemove = await Art.findOne({
+      where: {
+        id: req.params.artId
+      }
+    })
+
+    order.removeArt(artToRemove)
+    res.sendStatus(202)
   } catch (error) {
     next(error)
   }
