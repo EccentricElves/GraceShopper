@@ -3,6 +3,7 @@ const {Art} = require('../db/models')
 module.exports = router
 
 //GET ALL ART
+//
 router.get('/', async (req, res, next) => {
   try {
     const allProducts = await Art.findAll({
@@ -20,7 +21,6 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const singleProduct = await Art.findByPk(req.params.id)
-    console.log('SINGLE PRODUCT', singleProduct)
     res.json(singleProduct)
   } catch (error) {
     next(error)
