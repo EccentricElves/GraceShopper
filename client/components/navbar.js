@@ -10,7 +10,7 @@ import thankYou from './thankYou'
 const Navbar = ({handleClick, isLoggedIn, email, name}) => {
   return (
     <div>
-      {/* <h1>Eccentric Elves Arts</h1> */}
+      <h1>Eccentric Elves Arts CI</h1>
       <nav className="navbar">
         {isLoggedIn ? (
           <div className="leftnav">
@@ -36,8 +36,12 @@ const Navbar = ({handleClick, isLoggedIn, email, name}) => {
             <Switch />
           </div>
         )}
-        <Link to="/cart" className="cartButton">
-          <img src={import('../../public/images/cart.png')} />
+        <Link to="/cart">
+          <img
+            src="  /images/cart.png"
+            alt="Cart Image"
+            className="cartButton"
+          />
         </Link>
       </nav>
       <hr />
