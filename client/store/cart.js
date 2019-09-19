@@ -13,10 +13,10 @@ export const addArt = artId => {
       const {data} = await axios.put(`/api/order/add/${artId}`)
       dispatch(addedArt(data))
     } catch (error) {
-      let myData = JSON.parse(localStorage.getItem('cart')) || {data: []}
-      if (!myData.data.map(x => x.id).includes(artId)) {
+      let myData = JSON.parse(localStorage.getItem('cart')) || {arts: []}
+      if (!myData.arts.map(x => x.id).includes(artId)) {
         const {data} = await axios.get(`/api/art/${artId}`)
-        myData = {...myData, data: [...myData.data, data]}
+        myData.arts = myData.arts.concat(data)
         localStorage.setItem('cart', JSON.stringify(myData))
       }
     }
