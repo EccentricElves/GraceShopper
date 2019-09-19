@@ -19,7 +19,7 @@ CI / CD
 - Add environmental vars for google stuff
 ￼
 - In google app, add the callback url and base url of our heroku app
-￼
+￼![google console](https://raw.githubusercontent.com/rushilshakya/GraceShopper/dev/img/googleOauthConfig.jpg)
 Continuous Integration
 - Add the EccentricElves org to Travis
 
