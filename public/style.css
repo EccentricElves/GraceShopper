@@ -42,6 +42,8 @@ button {
   border: none;
   cursor: pointer;
   width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
 }
 button:hover {
   opacity: 0.8;
@@ -80,7 +82,11 @@ button:hover {
   max-width: 800px;
   max-height: 400px;
 }
-
+.login {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
 .cartImage {
   width: 100%;
   max-width: 800px;
