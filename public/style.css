@@ -21,7 +21,7 @@ nav a {
   margin: 1em;
 }
 div {
-  color: azure;
+  color: aliceblue;
 }
 form div {
   margin: 1em;
@@ -52,16 +52,16 @@ button:hover {
 }
 .navbar {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   background-size: 100% 100%;
   height: 210px;
   background-image: url('./images/logo.jpg');
 }
 body {
-  /* background-image: url('./images/background.jpg'); */
+  background-image: url('./images/background2.jpg');
   /* background-position: center center; */
-  background-size: 100% 100%;
+  background-size: cover;
   /* margin-top: 10px;  */
 }
 .body > div {
@@ -89,6 +89,7 @@ body {
   border: 1px solid #021a40;
   background-color: green;
 }
+
 .login {
   display: flex;
   flex-direction: column;
@@ -101,6 +102,7 @@ body {
 
 .cartButton {
   width: 7em;
+  align-items: flex-end;
   /* max-width: 100px; */
   margin: 0;
   /* margin-right: 10px; */
