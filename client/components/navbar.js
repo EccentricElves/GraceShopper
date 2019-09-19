@@ -20,7 +20,7 @@ const Navbar = ({handleClick, isLoggedIn, email, name}) => {
             <a href="#" onClick={handleClick}>
               Logout
             </a>
-            <h3>Welcome, {name}</h3>
+            <h3>Welcome, {name || email}</h3>
           </div>
         ) : (
           <div>
