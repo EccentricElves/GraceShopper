@@ -53,12 +53,9 @@ export const checkOutThunk = () => {
 export const removeArtFromCart = artId => {
   return async dispatch => {
     try {
-      console.log('after try statement')
       const {data} = await Axios.delete(`/api/order/cart/remove/${artId}`)
-      console.log('return data', data)
       dispatch(removedArt(data.id))
     } catch (error) {
-      console.log('i ran')
       let myData = JSON.parse(localStorage.getItem('cart'))
       myData.arts = myData.arts.filter(art => art.id !== artId)
       localStorage.setItem('cart', JSON.stringify(myData))
