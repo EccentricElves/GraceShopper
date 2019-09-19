@@ -33,11 +33,19 @@ class DisconnectedCart extends React.Component {
           })}
         </div>
         <div>
-          <Link to="/thankyou">
-            <button type="submit" onClick={() => this.handleSubmit()}>
-              Check Out
-            </button>
-          </Link>
+          {this.props.isLoggedIn ? (
+            <Link to="/thankyou">
+              <button type="submit" onClick={() => this.handleSubmit()}>
+                Check Out
+              </button>
+            </Link>
+          ) : (
+            <Link to="/signup">
+              <button type="submit" onClick={() => this.handleSubmit()}>
+                Please Login/Signup First
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     ) : (
@@ -47,7 +55,8 @@ class DisconnectedCart extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  cart: state.cartReducer.cart
+  cart: state.cartReducer.cart,
+  isLoggedIn: state.user.id
 })
 
 const mapDispatchToProps = dispatch => ({

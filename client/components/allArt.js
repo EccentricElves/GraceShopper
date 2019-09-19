@@ -14,13 +14,15 @@ class DisconnectedArt extends React.Component {
     return this.props.art ? (
       <div>
         <h1>Art</h1>
-        {this.props.art.map(singleArt => {
-          return (
-            <div key={singleArt.id}>
-              <SingleArt art={singleArt} />
-            </div>
-          )
-        })}
+        <div className="allArt">
+          {this.props.art.map(singleArt => {
+            return (
+              <div key={singleArt.id} className="art">
+                <SingleArt art={singleArt} />
+              </div>
+            )
+          })}
+        </div>
       </div>
     ) : (
       <div />
