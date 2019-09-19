@@ -22,9 +22,9 @@ const addedArt = art => ({
   art
 })
 
-const removedArt = art => ({
+const removedArt = artId => ({
   type: REMOVED_ART,
-  art
+  artId
 })
 
 //Thunk Creator
@@ -53,10 +53,16 @@ export const checkOutThunk = () => {
 export const removeArtFromCart = artId => {
   return async dispatch => {
     try {
+      console.log('after try statement')
       const {data} = await Axios.delete(`/api/order/cart/remove/${artId}`)
-      dispatch(removedArt(data))
+      console.log('return data', data)
+      dispatch(removedArt(data.id))
     } catch (error) {
-      console.error(error)
+      console.log('i ran')
+      let myData = JSON.parse(localStorage.getItem('cart'))
+      myData.arts = myData.arts.filter(art => art.id !== artId)
+      localStorage.setItem('cart', JSON.stringify(myData))
+      dispatch(removedArt(artId))
     }
   }
 }
@@ -85,7 +91,7 @@ const cartReducer = (state = {}, action) => {
     case CHECK_OUT:
       return {...state, cart: action.cart}
     case REMOVED_ART: {
-      let arts = state.cart.arts.filter(art => art.id !== action.art.id)
+      let arts = state.cart.arts.filter(art => art.id !== action.artId)
       let cart = {...state.cart, arts}
       return {
         ...state,
