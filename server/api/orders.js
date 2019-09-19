@@ -52,7 +52,7 @@ router.delete('/cart/remove/:artId', async (req, res, next) => {
     })
 
     order.removeArt(artToRemove)
-    res.sendStatus(202)
+    res.status(202).json(artToRemove)
   } catch (error) {
     next(error)
   }

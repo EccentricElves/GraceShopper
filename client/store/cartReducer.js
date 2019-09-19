@@ -4,18 +4,26 @@ import Axios from 'axios'
 const ALL_CART = 'ALL_CART'
 const CHECK_OUT = 'CHECK_OUT'
 const ADDED_ART = 'ADDED_ART'
+const REMOVED_ART = 'REMOVED_ART'
 
 //Action Creator
 const gotCart = cart => ({
   type: ALL_CART,
   cart
 })
+
 const checkOut = cart => ({
   type: CHECK_OUT,
   cart
 })
+
 const addedArt = art => ({
   type: ADDED_ART,
+  art
+})
+
+const removedArt = art => ({
+  type: REMOVED_ART,
   art
 })
 
@@ -30,6 +38,7 @@ export const getCartThunk = () => {
     }
   }
 }
+
 export const checkOutThunk = () => {
   return async dispatch => {
     try {
@@ -40,6 +49,18 @@ export const checkOutThunk = () => {
     }
   }
 }
+
+export const removeArtFromCart = artId => {
+  return async dispatch => {
+    try {
+      const {data} = await Axios.delete(`/api/order/cart/remove/${artId}`)
+      dispatch(removedArt(data))
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
 export const addArt = artId => {
   return async dispatch => {
     try {
@@ -63,6 +84,14 @@ const cartReducer = (state = {}, action) => {
       return {...state, cart: action.cart}
     case CHECK_OUT:
       return {...state, cart: action.cart}
+    case REMOVED_ART: {
+      let arts = state.cart.arts.filter(art => art.id !== action.art.id)
+      let cart = {...state.cart, arts}
+      return {
+        ...state,
+        cart
+      }
+    }
     case ADDED_ART:
       return state
     default:
