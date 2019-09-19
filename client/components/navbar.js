@@ -10,13 +10,14 @@ import thankYou from './thankYou'
 const Navbar = ({handleClick, isLoggedIn, email, name}) => {
   return (
     <div>
-      <h1>Eccentric Elves Arts CI</h1>
       <nav className="navbar">
         {isLoggedIn ? (
           <div className="leftnav">
             {/* The navbar will show these links after you log in */}
-            <Link to="/">Home</Link>
-            <a href="#" onClick={handleClick}>
+            <Link to="/" className="link">
+              Home
+            </Link>
+            <a href="#" onClick={handleClick} className="link">
               Logout
             </a>
             <h3>Welcome, {name || email}</h3>
