@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {addArt} from '../store/cart'
+import {addArt} from '../store/cartReducer'
 
 class DisconnectedCartButton extends Component {
   constructor() {
