@@ -10,7 +10,7 @@ import thankYou from './thankYou'
 const Navbar = ({handleClick, isLoggedIn, email, name}) => {
   return (
     <div>
-      <h1>Eccentric Elves Arts</h1>
+      <h1>Eccentric Elves Arts CI</h1>
       <nav className="navbar">
         {isLoggedIn ? (
           <div className="leftnav">
