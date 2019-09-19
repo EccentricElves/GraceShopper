@@ -11,12 +11,11 @@ const Navbar = ({handleClick, isLoggedIn, email, name}) => {
   return (
     <div>
       <h1>Eccentric Elves Arts</h1>
-      <nav>
+      <nav className="navbar">
         {isLoggedIn ? (
-          <div>
+          <div className="leftnav">
             {/* The navbar will show these links after you log in */}
             <Link to="/">Home</Link>
-            <Link to="/cart">Cart</Link>
             <a href="#" onClick={handleClick}>
               Logout
             </a>
@@ -26,13 +25,9 @@ const Navbar = ({handleClick, isLoggedIn, email, name}) => {
           <div>
             {/* The navbar will show these links before you log in */}
             <Link to="/">Home</Link>
-            <Link to="/cart">Cart</Link>
             <Link to="/login">Login</Link>
             <Link to="/signup">Sign Up</Link>
-            <Switch>
-              <Route exact path="/signup" component={Signup} />
-              <Route exact path="/login" component={Login} />
-            </Switch>
+            <Switch />
           </div>
         )}
         <Link to="/cart" className="cartButton">
