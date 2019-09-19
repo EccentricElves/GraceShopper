@@ -20,3 +20,14 @@ CI / CD
 ￼
 - In google app, add the callback url and base url of our heroku app
 ￼
+Continuous Integration
+- Add the EccentricElves org to Travis
+
+- Enable the repo for Travis
+
+- Checkout to dev branch
+- >npm run heroku-token
+- In package.json, add the following line:
+    - “build”: “webpack”
+
+- That should do it!
