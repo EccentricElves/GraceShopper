@@ -13,7 +13,6 @@ class DisconnectedCartButton extends Component {
   handleOnClick() {
     this.props.addToCart(this.props.productId)
     toastr.success('Nice!', 'You have added an Item to your Cart')
-    console.log('running after dispatch')
   }
 
   render() {
