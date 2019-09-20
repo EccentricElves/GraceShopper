@@ -13,17 +13,17 @@ import './socket'
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <ReduxToastr
-        timeOut={4000}
-        newestOnTop={false}
-        preventDuplicatates
-        position="top-left"
-        transitionIn="fadeIn"
-        transitionOut="fadeOut"
-        closeOnToastrClick
-      />
       <App />
     </Router>
+    <ReduxToastr
+      timeOut={4000}
+      newestOnTop={false}
+      preventDuplicatates
+      position="bottom-right"
+      transitionIn="fadeIn"
+      transitionOut="fadeOut"
+      closeOnToastrClick
+    />
   </Provider>,
   document.getElementById('app')
 )
