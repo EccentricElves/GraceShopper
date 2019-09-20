@@ -20,19 +20,23 @@ class DisconnectedCart extends React.Component {
     return this.props.cart ? (
       <div>
         <h1>Cart</h1>
-        <div>
-          {this.props.cart.arts.map(item => {
-            return (
-              <ul key={item.id} className="cartList">
-                <img src={item.imageURL} className="cartImage" />
-                <div>{item.name}</div>
-                <div>{item.artist}</div>
-                <div>{item.price}</div>
-                <RemoveButton productId={item.id} />
-              </ul>
-            )
-          })}
-        </div>
+        {!this.props.cart.arts[0] ? (
+          <div>Cart Is Empty</div>
+        ) : (
+          <div>
+            {this.props.cart.arts.map(item => {
+              return (
+                <ul key={item.id} className="cartList">
+                  <img src={item.imageURL} className="cartImage" />
+                  <div>{item.name}</div>
+                  <div>{item.artist}</div>
+                  <div>{item.price}</div>
+                  <RemoveButton productId={item.id} />
+                </ul>
+              )
+            })}
+          </div>
+        )}
         <div>
           {this.props.isLoggedIn ? (
             <Link to="/thankyou">

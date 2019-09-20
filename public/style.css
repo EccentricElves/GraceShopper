@@ -11,7 +11,9 @@ h1 {
   text-align: center;
   margin: 0;
 }
-
+h3 {
+  margin-inline-start: 10px;
+}
 label {
   display: block;
 }
@@ -20,7 +22,9 @@ nav a {
   display: inline-block;
   margin: 1em;
 }
-
+div {
+  color: aliceblue;
+}
 form div {
   margin: 1em;
   display: inline-block;
@@ -42,20 +46,25 @@ button {
   border: none;
   cursor: pointer;
   width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
 }
 button:hover {
   opacity: 0.8;
 }
 .navbar {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-}
-.body {
-  /* background-image: url('./images/background.jpg'); */
-  background-position: center center;
   background-size: 100% 100%;
-  margin-top: 10px;
+  height: 210px;
+  background-image: url('./images/logo.jpg');
+}
+body {
+  background-image: url('./images/background2.jpg');
+  /* background-position: center center; */
+  background-size: cover;
+  /* margin-top: 10px;  */
 }
 .body > div {
   width: 80%;
@@ -78,21 +87,32 @@ button:hover {
 .imageUrl {
   width: 100%;
   max-width: 800px;
-  max-height: 400px;
+  padding: 1px;
+  border: 1px solid #021a40;
+  background-color: green;
 }
 
+.login {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
 .cartImage {
   width: 100%;
   max-width: 800px;
 }
 
 .cartButton {
-  width: 100%;
-  max-width: 100px;
+  width: 7em;
+  align-items: flex-end;
+  /* max-width: 100px; */
   margin: 0;
-  margin-right: 10px;
+  /* margin-right: 10px; */
 }
 .leftnav {
   display: flex;
   align-items: center;
+}
+.link {
+  color: azure;
 }
