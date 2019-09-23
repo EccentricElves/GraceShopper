@@ -40,7 +40,15 @@ class DisconnectedCart extends React.Component {
         )}
         <div>
           {this.props.isLoggedIn ? (
-            <Checkout name="stripe" description="test" amount={1000} />
+            <Checkout
+              name="Checkout"
+              description="Checkout"
+              amount={this.props.cart.arts.reduce(
+                (accum, item) => accum + item.price,
+                0
+              )}
+              handleCheckoutSuccess={this.props.checkOut}
+            />
           ) : (
             <Link to="/signup">
               <button type="submit" onClick={() => this.handleSubmit()}>
