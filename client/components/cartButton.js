@@ -14,7 +14,11 @@ class DisconnectedCartButton extends Component {
   }
 
   render() {
-    return <button onClick={this.handleOnClick}>ADD TO CART</button>
+    return (
+      <button onClick={this.handleOnClick} className="hobbithandbutton">
+        ADD TO CART
+      </button>
+    )
   }
 }
 
