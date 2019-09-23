@@ -13,7 +13,7 @@ class DisconnectedArt extends React.Component {
   render() {
     return this.props.art ? (
       <div>
-        <h1>Art</h1>
+        <h1 className="tengwarfont">Art</h1>
         <div className="allArt">
           {this.props.art.map(singleArt => {
             return (

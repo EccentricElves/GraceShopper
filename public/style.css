@@ -75,6 +75,8 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  font-family: bilbobold;
+  font-size: 24pt;
 }
 
 .art {
@@ -115,4 +117,51 @@ body {
 }
 .link {
   color: azure;
+  font-family: hobbithand;
+  font-size: 20pt;
+}
+
+.welcome {
+  color: azure;
+  font-family: bilbobold;
+  font-size: 24pt;
+}
+
+.tengwarfont {
+  color: white;
+  font-family: tengwar;
+  font-size: 50pt;
+}
+
+.bilbosmall {
+  color: white;
+  font-family: bilbobold;
+  font-size: 16pt;
+}
+
+.hobbithandbutton {
+  color: white;
+  font-family: hobbithand;
+  font-size: 14pt;
+}
+
+.singleArtFont {
+  color: white;
+  font-family: hobbithand;
+  font-size: 20pt;
+}
+
+@font-face {
+  font-family: bilbobold;
+  src: url('./fonts/bilbobold.ttf');
+}
+
+@font-face {
+  font-family: tengwar;
+  src: url('./fonts/TENGWAR3.ttf');
+}
+
+@font-face {
+  font-family: hobbithand;
+  src: url('./fonts/hobbitonbrushhand.ttf');
 }
