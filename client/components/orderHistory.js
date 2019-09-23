@@ -12,32 +12,65 @@ class DisconnectedOrderHistory extends React.Component {
       <div>
         <h1 className="tengwarfont">Order History</h1>
         {!this.props.historicOrders[0] ? (
-          <div className="tengwarfont">Order History Empty</div>
+          <div className="tengwarfont">Order History is Empty</div>
         ) : (
           <div>
-            {this.props.historicOrders.map(item => {
-              return (
-                <ul key={item.id} className="cartList">
-                  <div className="singleArtFont">Order Number: {item.id}</div>
-                  <div className="singleArtFont">Status: {item.status}</div>
-                  <div className="singleArtFont">
-                    Orders: {item.arts.length}
-                  </div>
-                </ul>
-              )
-            })}
+            <ul>
+              {this.props.historicOrders.map(item => {
+                const orderDate = new Date(item.updatedAt).toString().split(' ')
+                const showDate =
+                  orderDate[0] +
+                  ' ' +
+                  orderDate[1] +
+                  ' ' +
+                  orderDate[2] +
+                  ', ' +
+                  orderDate[3]
+
+                return (
+                  <li key={item.id} className="cartList">
+                    <div className="singleArtFont">Order Number: {item.id}</div>
+                    <div className="singleArtFont">Order Date: {showDate}</div>
+                    {/* <div className="singleArtFont">Status: {item.status}</div> */}
+                    <div className="singleArtFont">
+                      Items: {item.arts.length}
+                    </div>
+                    <div className="singleArtFont">
+                      Total Price:{' '}
+                      {item.arts.reduce(
+                        (sum, art) => sum + art.OrderDetail.price,
+                        0
+                      )}
+                    </div>
+                    <div className="singleArtFont">Order Details</div>
+                    <ul>
+                      {item.arts.map(art => {
+                        return (
+                          <li key={art.id} className="cartList">
+                            <img src={art.imageURL} className="cartImage" />
+                            <div className="singleArtFont">
+                              Name: {art.name}
+                            </div>
+                            <div className="singleArtFont">
+                              Artist: {art.artist}
+                            </div>
+                            <div className="singleArtFont">
+                              Price: {art.OrderDetail.price}
+                            </div>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                    <hr />
+                  </li>
+                )
+              })}
+            </ul>
           </div>
         )}
-        <div>
-          {this.props.isLoggedIn ? (
-            <div>you're logged in </div>
-          ) : (
-            <div>you're not logged in </div>
-          )}
-        </div>
       </div>
     ) : (
-      <div />
+      <div className="tengwarfont">You have no Order History</div>
     )
   }
 }
