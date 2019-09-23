@@ -20,19 +20,19 @@ const Navbar = ({handleClick, isLoggedIn, email, name}) => {
             <a href="#" onClick={handleClick} className="link">
               Logout
             </a>
-            <h3>Welcome, {name || email}</h3>
+            <h3 className="welcome">welcome, {name || email}</h3>
           </div>
         ) : (
           <div>
             {/* The navbar will show these links before you log in */}
             <Link to="/" className="link">
-              Home
+              home
             </Link>
             <Link to="/login" className="link">
-              Login
+              login
             </Link>
             <Link to="/signup" className="link">
-              Sign Up
+              sign up
             </Link>
             <Switch />
           </div>

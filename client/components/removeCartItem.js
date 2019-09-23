@@ -14,7 +14,11 @@ class DisconnectedRemoveButton extends Component {
   }
 
   render() {
-    return <button onClick={this.handleOnClick}>REMOVE FROM CART</button>
+    return (
+      <button onClick={this.handleOnClick} className="hobbithandbutton">
+        REMOVE FROM CART
+      </button>
+    )
   }
 }
 

@@ -18,7 +18,7 @@ ReactDOM.render(
     <ReduxToastr
       timeOut={4000}
       newestOnTop={false}
-      preventDuplicatates
+      preventDuplicates
       position="bottom-right"
       transitionIn="fadeIn"
       transitionOut="fadeOut"
