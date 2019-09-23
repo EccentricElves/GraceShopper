@@ -19,18 +19,18 @@ class DisconnectedCart extends React.Component {
   render() {
     return this.props.cart ? (
       <div>
-        <h1>Cart</h1>
+        <h1 className="tengwarfont">Cart</h1>
         {!this.props.cart.arts[0] ? (
-          <div>Cart Is Empty</div>
+          <div className="tengwarfont">Cart Is Empty</div>
         ) : (
           <div>
             {this.props.cart.arts.map(item => {
               return (
                 <ul key={item.id} className="cartList">
                   <img src={item.imageURL} className="cartImage" />
-                  <div>{item.name}</div>
-                  <div>{item.artist}</div>
-                  <div>{item.price}</div>
+                  <div className="singleArtFont">Name: {item.name}</div>
+                  <div className="singleArtFont">Artist: {item.artist}</div>
+                  <div className="singleArtFont">Price: {item.price}</div>
                   <RemoveButton productId={item.id} />
                 </ul>
               )
@@ -40,13 +40,21 @@ class DisconnectedCart extends React.Component {
         <div>
           {this.props.isLoggedIn ? (
             <Link to="/thankyou">
-              <button type="submit" onClick={() => this.handleSubmit()}>
+              <button
+                type="submit"
+                className="hobbithandbutton"
+                onClick={() => this.handleSubmit()}
+              >
                 Check Out
               </button>
             </Link>
           ) : (
             <Link to="/signup">
-              <button type="submit" onClick={() => this.handleSubmit()}>
+              <button
+                type="submit"
+                className="hobbithandbutton"
+                onClick={() => this.handleSubmit()}
+              >
                 Please Login/Signup First
               </button>
             </Link>
