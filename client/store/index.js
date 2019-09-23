@@ -6,8 +6,15 @@ import {reducer as toastr} from 'react-redux-toastr'
 import user from './user'
 import artReducer from './allArtReducer'
 import cartReducer from './cartReducer'
+import orderHistoryReducer from './orderHistoryReducer'
 
-const reducer = combineReducers({user, artReducer, cartReducer, toastr})
+const reducer = combineReducers({
+  user,
+  artReducer,
+  cartReducer,
+  toastr,
+  orderHistoryReducer
+})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
