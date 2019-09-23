@@ -16,6 +16,7 @@ function isLoggedIn(req, res, next) {
 router.use('/users', isAccessGranted, require('./users'))
 router.use('/art', require('./ProductRoutes'))
 router.use('/order', isLoggedIn, require('./orders'))
+router.use('/stripe', isLoggedIn, require('./stripe'))
 
 router.use((req, res, next) => {
   const error = new Error('Not Found')
