@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Link, Redirect, Route} from 'react-router-dom'
 import {getCartThunk, checkOutThunk} from '../store/cartReducer'
 import thankYou from './thankYou'
+import Checkout from './checkout'
 import RemoveButton from './removeCartItem'
 
 class DisconnectedCart extends React.Component {
@@ -39,15 +40,15 @@ class DisconnectedCart extends React.Component {
         )}
         <div>
           {this.props.isLoggedIn ? (
-            <Link to="/thankyou">
-              <button
-                type="submit"
-                className="hobbithandbutton"
-                onClick={() => this.handleSubmit()}
-              >
-                Check Out
-              </button>
-            </Link>
+            <Checkout
+              name="Checkout"
+              description="Checkout"
+              amount={this.props.cart.arts.reduce(
+                (accum, item) => accum + item.price,
+                0
+              )}
+              handleCheckoutSuccess={this.props.checkOut}
+            />
           ) : (
             <Link to="/signup">
               <button
