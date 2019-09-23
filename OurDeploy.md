@@ -17,6 +17,22 @@ CI / CD
   * > heroku run bash
   * > npm run seed
 * Add environmental vars for google stuff
-  ￼
+  ￼![heroku environment variables](https://raw.githubusercontent.com/rushilshakya/GraceShopper/dev/img/googleOauthConfig.jpg)
+
 * In google app, add the callback url and base url of our heroku app
-  ￼
+  ￼![google console](https://raw.githubusercontent.com/rushilshakya/GraceShopper/dev/img/herokuEnv.jpg)
+
+Continuous Integration
+
+* Add the EccentricElves org to Travis
+  ￼![Travis dashboard](https://raw.githubusercontent.com/rushilshakya/GraceShopper/dev/img/travisOrgs.jpg)
+
+* Enable the repo for Travis
+  ￼![Travis enable repo](https://raw.githubusercontent.com/rushilshakya/GraceShopper/dev/img/travisEnableRepo.jpg)
+
+* Checkout to dev branch
+* > npm run heroku-token
+* In package.json, add the following line: - “build”: “webpack”
+  ￼![Travis enable repo](https://raw.githubusercontent.com/rushilshakya/GraceShopper/dev/img/webpack.jpg)
+
+* That should do it!
