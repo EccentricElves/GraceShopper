@@ -15,10 +15,10 @@ class SingleArtPage extends React.Component {
         <div>
           <img className="imageUrl" src={this.props.art.imageURL} />
         </div>
-        <div>{this.props.art.name}</div>
-        <div>{this.props.art.artist}</div>
-        <div>{this.props.art.price}</div>
-        <div>TAGS</div>
+        <div className="singleArtFont">Name:{this.props.art.name}</div>
+        <div className="singleArtFont">Artist: {this.props.art.artist}</div>
+        <div className="singleArtFont">Price: {this.props.art.price}</div>
+        {/* <div>TAGS</div> */}
         <CartButton productId={this.props.art.id} />
       </div>
     ) : (
