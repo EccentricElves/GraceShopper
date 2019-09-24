@@ -38,7 +38,7 @@ class DisconnectedCart extends React.Component {
             })}
           </div>
         )}
-        <div>
+        <div className="stripe_checkout">
           {this.props.isLoggedIn ? (
             <Checkout
               name="Checkout"

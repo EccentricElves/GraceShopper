@@ -31,7 +31,7 @@ const onToken = (amount, description, handleCheckoutSuccess) => async token => {
 
 const Checkout = ({name, description, amount, handleCheckoutSuccess}) => {
   return (
-    <div className="stripe_checkout">
+    <div>
       <StripeCheckout
         name={name}
         description={description}
@@ -41,12 +41,6 @@ const Checkout = ({name, description, amount, handleCheckoutSuccess}) => {
         stripeKey="pk_test_Tm68jOcpaletOdKFzp80ochj00YAnOJpLE"
         label="Pay with 💳"
       />
-
-      {/* <Link to="/thankyou">
-        <button type="submit" onClick={() => this.handleSubmit()}>
-          Check Out
-        </button>
-      </Link> */}
     </div>
   )
 }
