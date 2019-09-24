@@ -30,7 +30,7 @@ const removedArt = artId => ({
 //Thunk Creator
 export const getCartThunk = () => {
   return async dispatch => {
-    let localData = JSON.parse(localStorage.getItem('cart'))
+    let localData = JSON.parse(localStorage.getItem('cart')) || {arts: []}
     try {
       const {data} = await Axios.post('/api/order/cart', localData)
       //if no error thrown, then localData is now in database
@@ -81,18 +81,19 @@ export const addArt = artId => {
         const {data} = await Axios.get(`/api/art/${artId}`)
         myData.arts = myData.arts.concat(data)
         localStorage.setItem('cart', JSON.stringify(myData))
+        dispatch(addedArt(data))
       }
     }
   }
 }
 
 //Cart Reducer
-const cartReducer = (state = {}, action) => {
+const cartReducer = (state = {cart: {arts: []}}, action) => {
   switch (action.type) {
     case ALL_CART:
       return {...state, cart: action.cart}
     case CHECK_OUT:
-      return {...state, cart: {}}
+      return {...state, cart: {arts: []}}
     case REMOVED_ART: {
       let arts = state.cart.arts.filter(art => art.id !== action.artId)
       let cart = {...state.cart, arts}
@@ -101,8 +102,16 @@ const cartReducer = (state = {}, action) => {
         cart
       }
     }
-    case ADDED_ART:
+    case ADDED_ART: {
+      let index = state.cart.arts.findIndex(art => art.id === action.art.id)
+
+      if (index === -1) {
+        let arts = [...state.cart.arts, action.art]
+        let cart = {...state.cart, arts}
+        return {...state, cart}
+      }
       return state
+    }
     default:
       return state
   }

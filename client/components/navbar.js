@@ -7,7 +7,7 @@ import {Login, Signup} from './auth-form'
 import Cart from './cart'
 import thankYou from './thankYou'
 
-const Navbar = ({handleClick, isLoggedIn, email, name}) => {
+const Navbar = ({handleClick, isLoggedIn, email, name, cartCount}) => {
   return (
     <div>
       <nav className="navbar">
@@ -47,6 +47,7 @@ const Navbar = ({handleClick, isLoggedIn, email, name}) => {
             alt="Cart Image"
             className="cartButton"
           />
+          {cartCount}
         </Link>
       </nav>
       <hr />
@@ -61,7 +62,8 @@ const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
     email: state.user.email,
-    name: state.user.name
+    name: state.user.name,
+    cartCount: state.cartReducer.cart ? state.cartReducer.cart.arts.length : 0
   }
 }
 

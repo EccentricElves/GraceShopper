@@ -132,7 +132,7 @@ router.put('/add/:artId', async (req, res, next) => {
 
     //user ---> order <---> item
 
-    res.json(order)
+    res.json(artItem)
   } catch (error) {
     next(error)
   }
