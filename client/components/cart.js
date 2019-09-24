@@ -1,8 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link, Redirect, Route} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {getCartThunk, checkOutThunk} from '../store/cartReducer'
-import thankYou from './thankYou'
 import Checkout from './checkout'
 import RemoveButton from './removeCartItem'
 

@@ -30,11 +30,17 @@ const removedArt = artId => ({
 //Thunk Creator
 export const getCartThunk = () => {
   return async dispatch => {
+    let localData = JSON.parse(localStorage.getItem('cart'))
     try {
-      const {data} = await Axios.get('/api/order/cart')
+      const {data} = await Axios.post('/api/order/cart', localData)
+      //if no error thrown, then localData is now in database
+      //so lets delete the localStorage
+      localStorage.removeItem('cart')
       dispatch(gotCart(data))
     } catch (error) {
-      dispatch(gotCart(JSON.parse(localStorage.getItem('cart'))))
+      if (error.response.status === 403) {
+        dispatch(gotCart(localData))
+      }
     }
   }
 }
