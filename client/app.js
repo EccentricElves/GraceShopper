@@ -3,6 +3,7 @@ import {Route, Switch} from 'react-router-dom'
 import {Navbar, AllArt, SingleArtPage, Signup, Login} from './components'
 import thankYou from './components/thankYou'
 import Cart from './components/cart'
+import OrderHistory from './components/orderHistory'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/cart" component={Cart} />
+          <Route exact path="/orderhistory" component={OrderHistory} />
         </Switch>
       </div>
     </div>
