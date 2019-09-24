@@ -48,7 +48,7 @@ class DisconnectedUserHome extends Component {
 
     return (
       <div>
-        <h3>Welcome To Your Profile</h3>
+        <h1>Welcome To Your Profile</h1>
         {!this.state.edit ? (
           <div>
             <div className="userPage">
@@ -57,15 +57,24 @@ class DisconnectedUserHome extends Component {
               </div>
               <div className="userInfo">
                 <ul>
-                  <div>Name: {user.name}</div>
-                  <div>Email Address: {user.email}</div>
                   <div>
-                    Address: {user.address ? user.address : 'No address'}
+                    <strong>Name: </strong> {user.name}
+                  </div>
+                  <div>
+                    <strong>Email Address: </strong> {user.email}
+                  </div>
+                  <div>
+                    <strong>Address: </strong>
+                    {user.address ? user.address : 'No address'}
                   </div>
                 </ul>
               </div>
             </div>
-            <button type="button" onClick={this.handleOnClick}>
+            <button
+              type="button"
+              onClick={this.handleOnClick}
+              className="editsave"
+            >
               Edit Profile
             </button>
           </div>
@@ -98,7 +107,9 @@ class DisconnectedUserHome extends Component {
                       onChange={this.handleOnChange}
                     />
                   </div>
-                  <button type="submit">Save</button>
+                  <button type="submit" className="editsave">
+                    Save
+                  </button>
                 </form>
               </ul>
             </div>

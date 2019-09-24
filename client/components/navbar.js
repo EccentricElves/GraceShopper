@@ -17,16 +17,16 @@ const Navbar = ({handleClick, isLoggedIn, email, name}) => {
             <Link to="/" className="link">
               Home
             </Link>
-            <a href="#" onClick={handleClick} className="link">
-              Logout
-            </a>
             <div className="userNav">
               <h3 className="welcome">welcome, {name || email}</h3>
-              <Link to="user" className="user">
+              <Link to="/user" className="user">
                 {' '}
                 View Profile
               </Link>
             </div>
+            <a href="#" onClick={handleClick} className="link">
+              Logout
+            </a>
           </div>
         ) : (
           <div>

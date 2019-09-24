@@ -22,6 +22,10 @@ nav a {
   display: inline-block;
   margin: 1em;
 }
+ul div {
+  font-family: fantasy;
+  font-size: 24px;
+}
 div {
   color: aliceblue;
 }
@@ -131,7 +135,9 @@ body {
   font-size: 20pt;
   align-items: flex-end;
 }
-
+.editsave {
+  width: 250px;
+}
 .welcome {
   color: azure;
   font-family: bilbobold;
@@ -166,7 +172,7 @@ body {
   color: white;
   font-family: hobbithand;
   font-size: 14pt;
-  width: 250px;
+  width: 100%;
 }
 
 .singleArtFont {
