@@ -150,9 +150,9 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.tengwarfont {
+.firstorderfont {
   color: white;
-  font-family: tengwar;
+  font-family: firstorder;
   font-size: 50pt;
 }
 
@@ -171,8 +171,8 @@ body {
 
 .singleArtFont {
   color: white;
-  font-family: hobbithand;
-  font-size: 20pt;
+  font-family: elven;
+  font-size: 30pt;
 }
 .userPage {
   display: flex;
@@ -183,14 +183,24 @@ body {
   src: url('./fonts/bilbobold.ttf');
 }
 
-@font-face {
+/* @font-face {
   font-family: tengwar;
   src: url('./fonts/TENGWAR3.ttf');
-}
+} */
 
 @font-face {
   font-family: hobbithand;
   src: url('./fonts/hobbitonbrushhand.ttf');
+}
+
+@font-face {
+  font-family: firstorder;
+  src: url('./fonts/firstorder.ttf');
+}
+
+@font-face {
+  font-family: elven;
+  src: url('./fonts/elvencommonspeak.ttf');
 }
 
 .toast-container button {
