@@ -45,14 +45,14 @@ const User = db.define('user', {
   googleId: {
     type: Sequelize.STRING,
     get() {
-      return () => this.googleId
+      return () => this.getDataValue('googleId')
     }
   },
   securityClearance: {
     type: Sequelize.ENUM('user', 'admin'),
     defaultValue: 'user',
     get() {
-      return () => this.securityClearance
+      return () => this.getDataValue('securityClearance')
     }
   }
 })
@@ -64,6 +64,10 @@ module.exports = User
  */
 User.prototype.correctPassword = function(candidatePwd) {
   return User.encryptPassword(candidatePwd, this.salt()) === this.password()
+}
+
+User.prototype.isAdmin = function() {
+  return this.securityClearance() === 'admin'
 }
 
 /**
