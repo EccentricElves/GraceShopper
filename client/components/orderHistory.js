@@ -10,9 +10,9 @@ class DisconnectedOrderHistory extends React.Component {
   render() {
     return this.props.historicOrders ? (
       <div>
-        <h1 className="tengwarfont">Order History</h1>
+        <h1 className="firstorderfont">Order History</h1>
         {!this.props.historicOrders[0] ? (
-          <div className="tengwarfont">Order History is Empty</div>
+          <div className="firstorderfont">Order History is Empty</div>
         ) : (
           <div>
             <ul>
@@ -70,7 +70,7 @@ class DisconnectedOrderHistory extends React.Component {
         )}
       </div>
     ) : (
-      <div className="tengwarfont">You have no Order History</div>
+      <div className="firstorderfont">You have no Order History</div>
     )
   }
 }
