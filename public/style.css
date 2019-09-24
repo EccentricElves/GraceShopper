@@ -184,3 +184,7 @@ body {
 .toast-container button {
   width: 50px;
 }
+
+.stripe_checkout {
+  width: 200px;
+}
