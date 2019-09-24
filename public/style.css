@@ -136,8 +136,20 @@ body {
   color: azure;
   font-family: bilbobold;
   font-size: 24pt;
+  margin-block-end: 0%;
 }
-
+.user {
+  margin-top: 0%;
+  margin-bottom: 4%;
+  justify-content: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: aliceblue;
+}
+.userNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .tengwarfont {
   color: white;
   font-family: tengwar;
