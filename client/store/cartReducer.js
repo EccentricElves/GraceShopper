@@ -86,7 +86,7 @@ const cartReducer = (state = {}, action) => {
     case ALL_CART:
       return {...state, cart: action.cart}
     case CHECK_OUT:
-      return {...state, cart: action.cart}
+      return {...state, cart: {}}
     case REMOVED_ART: {
       let arts = state.cart.arts.filter(art => art.id !== action.artId)
       let cart = {...state.cart, arts}

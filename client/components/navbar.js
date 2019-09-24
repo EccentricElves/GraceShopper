@@ -21,6 +21,7 @@ const Navbar = ({handleClick, isLoggedIn, email, name}) => {
               Logout
             </a>
             <h3 className="welcome">welcome, {name || email}</h3>
+            <Link to="user"> Edit Profile</Link>
           </div>
         ) : (
           <div>

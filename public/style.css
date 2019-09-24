@@ -150,7 +150,10 @@ body {
   font-family: hobbithand;
   font-size: 20pt;
 }
-
+.userPage {
+  display: flex;
+  flex-direction: row;
+}
 @font-face {
   font-family: bilbobold;
   src: url('./fonts/bilbobold.ttf');
