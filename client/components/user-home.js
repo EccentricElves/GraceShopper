@@ -1,31 +1,123 @@
-import React from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {updateUserThunk} from '../store'
 
 /**
  * COMPONENT
  */
-export const UserHome = props => {
-  const {user} = props
-  console.log(user)
+class DisconnectedUserHome extends Component {
+  constructor() {
+    super()
+    this.state = {
+      edit: false,
+      name: '',
+      address: ''
+    }
+    this.handleOnClick = this.handleOnClick.bind(this)
+    this.handleOnSubmit = this.handleOnSubmit.bind(this)
+    this.handleOnChange = this.handleOnChange.bind(this)
+  }
 
-  return (
-    <div>
-      <h3>Welcome To Your Profile</h3>
-      <div className="userPage">
-        <div>
-          <img src={user.userImage} />
-        </div>
-        <div className="userInfo">
-          <ul>
-            <div>Name: {user.name}</div>
-            <div>Email Address: {user.email}</div>
-            <div>Address: {user.address ? user.address : 'No address'}</div>
-          </ul>
-        </div>
+  handleOnClick() {
+    this.setState({
+      edit: true,
+      name: this.props.user.name,
+      address: this.props.user.address
+    })
+  }
+  handleOnSubmit() {
+    this.setState({
+      edit: false
+    })
+    this.props.updateUser(
+      this.props.user.id,
+      this.state.name,
+      this.state.address
+    )
+  }
+  handleOnChange(event) {
+    event.preventDefault()
+
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+  render() {
+    const {user} = this.props
+
+    return (
+      <div>
+        <h1>Welcome To Your Profile</h1>
+        {!this.state.edit ? (
+          <div>
+            <div className="userPage">
+              <div>
+                <img src={user.userImage} />
+              </div>
+              <div className="userInfo">
+                <ul>
+                  <div>
+                    <strong>Name: </strong> {user.name}
+                  </div>
+                  <div>
+                    <strong>Email Address: </strong> {user.email}
+                  </div>
+                  <div>
+                    <strong>Address: </strong>
+                    {user.address ? user.address : 'No address'}
+                  </div>
+                </ul>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={this.handleOnClick}
+              className="editsave"
+            >
+              Edit Profile
+            </button>
+          </div>
+        ) : (
+          <div className="userPage">
+            <div>
+              <img src={user.userImage} />
+            </div>
+            <div className="userInfo">
+              <ul>
+                <form onSubmit={this.handleOnSubmit}>
+                  <div>
+                    Name:
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Your Name!"
+                      value={this.state.name}
+                      onChange={this.handleOnChange}
+                    />
+                  </div>
+                  <div>Email Address: {user.email}</div>
+                  <div>
+                    Address:
+                    <input
+                      type="text"
+                      name="address"
+                      placeholder="Your Address!"
+                      value={this.state.address}
+                      onChange={this.handleOnChange}
+                    />
+                  </div>
+                  <button type="submit" className="editsave">
+                    Save
+                  </button>
+                </form>
+              </ul>
+            </div>
+          </div>
+        )}
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 /**
@@ -36,8 +128,14 @@ const mapState = state => {
     user: state.user
   }
 }
+const mapDispatch = dispatch => ({
+  updateUser: (id, name, address) =>
+    dispatch(updateUserThunk(id, name, address))
+})
 
-export default connect(mapState)(UserHome)
+const UserHome = connect(mapState, mapDispatch)(DisconnectedUserHome)
+
+export default UserHome
 
 // /**
 //  * PROP TYPES

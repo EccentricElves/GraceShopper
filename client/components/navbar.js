@@ -17,14 +17,16 @@ const Navbar = ({handleClick, isLoggedIn, email, name, cartCount}) => {
             <Link to="/" className="link">
               Home
             </Link>
-            <Link to="/orderHistory" className="link">
-              order history
-            </Link>
+            <div className="userNav">
+              <h3 className="welcome">welcome, {name || email}</h3>
+              <Link to="/user" className="user">
+                {' '}
+                View Profile
+              </Link>
+            </div>
             <a href="#" onClick={handleClick} className="link">
               Logout
             </a>
-            <h3 className="welcome">welcome, {name || email}</h3>
-            <Link to="user"> Edit Profile</Link>
           </div>
         ) : (
           <div>
@@ -49,6 +51,18 @@ const Navbar = ({handleClick, isLoggedIn, email, name, cartCount}) => {
           />
           <div id="cartCount">{cartCount}</div>
         </Link>
+        <div>
+          <Link to="/orderHistory" className="link">
+            order history
+          </Link>
+          <Link to="/cart">
+            <img
+              src="  /images/cart.png"
+              alt="Cart Image"
+              className="cartButton"
+            />
+          </Link>
+        </div>
       </nav>
       <hr />
     </div>

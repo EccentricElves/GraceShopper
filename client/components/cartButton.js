@@ -37,7 +37,7 @@ class DisconnectedCartButton extends Component {
         </button>
         <audio
           id="coinSound"
-          src="sounds/smw_coin.wav"
+          src="/sounds/smw_coin.wav"
           // autoPlay="{false}"
           type="audio/ogg"
         />

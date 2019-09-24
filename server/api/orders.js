@@ -156,4 +156,20 @@ router.get('/history', async (req, res, next) => {
   }
 })
 
+router.get('/thankyou/:orderId', async (req, res, next) => {
+  try {
+    const order = await Order.findOne({
+      where: {
+        userId: req.user.id,
+        status: 'completed'
+      },
+      include: [{model: Art}]
+    })
+
+    res.json(order)
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router

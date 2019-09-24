@@ -15,9 +15,9 @@ class DisconnectedCart extends React.Component {
   render() {
     return this.props.cart ? (
       <div>
-        <h1 className="tengwarfont">Cart</h1>
-        {!this.props.cart.arts[0] ? (
-          <div className="tengwarfont">Cart Is Empty</div>
+        <h1 className="firstorderfont">Cart</h1>
+        {!this.props.cart.arts.length ? (
+          <div className="firstorderfont">Cart Is Empty</div>
         ) : (
           <div>
             {this.props.cart.arts.map(item => {
@@ -58,7 +58,7 @@ class DisconnectedCart extends React.Component {
         </div>
       </div>
     ) : (
-      <div />
+      <div className="firstorderfont">Cart Is Empty</div>
     )
   }
 }
