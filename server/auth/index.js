@@ -21,10 +21,15 @@ router.post('/login', async (req, res, next) => {
 
 router.post('/signup', async (req, res, next) => {
   try {
-    //see if name exists, if not - get handle from user
-    req.body.name = req.body.name || req.body.email.split('@')[0]
-    const user = await User.create(req.body)
-    req.login(user, err => (err ? next(err) : res.json(user)))
+    if (req.body.password.length < 1) {
+      // check password length;
+      res.status(401).send('Password Too Short. Try At Least 1 Character.')
+    } else {
+      //see if name exists, if not - get handle from user
+      req.body.name = req.body.name || req.body.email.split('@')[0]
+      const user = await User.create(req.body)
+      req.login(user, err => (err ? next(err) : res.json(user)))
+    }
   } catch (err) {
     if (err.name === 'SequelizeUniqueConstraintError') {
       res.status(401).send('User already exists')

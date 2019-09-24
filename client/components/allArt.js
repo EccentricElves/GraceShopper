@@ -3,11 +3,13 @@ import {connect} from 'react-redux'
 import {getArtThunk} from '../store/allArtReducer'
 import SingleArt from './singleArt'
 import {me} from '../store'
+import {getCartThunk} from '../store/cartReducer'
 
 class DisconnectedArt extends React.Component {
   componentDidMount() {
     this.props.getArt()
     this.props.loadUserData()
+    this.props.getCart()
   }
 
   render() {
@@ -36,7 +38,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getArt: () => dispatch(getArtThunk()),
-  loadUserData: () => dispatch(me())
+  loadUserData: () => dispatch(me()),
+  getCart: () => dispatch(getCartThunk())
 })
 const AllArt = connect(mapStateToProps, mapDispatchToProps)(DisconnectedArt)
 

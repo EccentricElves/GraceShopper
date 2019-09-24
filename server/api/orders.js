@@ -17,6 +17,56 @@ router.get('/cart', async (req, res, next) => {
   }
 })
 
+// post /api/order/cart
+// this route is called with data in localstorage.
+// localstorage is to be merged with order
+router.post('/cart', async (req, res, next) => {
+  //first read if there is any guest cart passed in body
+  let guestCart = []
+  if (req.body.arts) guestCart = req.body.arts
+
+  try {
+    //now find or create pending order for user
+    const [order] = await Order.findOrCreate({
+      where: {
+        userId: req.user.id,
+        status: 'pending'
+      },
+      include: [{model: Art}]
+    })
+
+    //insert from guestCart
+    //should fail for duplicates
+    for (let i = 0; i < guestCart.length; i++) {
+      //first, get the art item for the id in the cart
+      const artItem = await Art.findOne({
+        where: {
+          id: guestCart[i].id,
+          inventory: 1
+        }
+      })
+
+      //if the art item exists for the id, then insert it
+      if (artItem) {
+        await order.addArt(artItem, {through: {price: artItem.price}})
+      }
+    }
+
+    //now return the cart data
+    const userOrder = await Order.findOne({
+      where: {
+        id: order.id
+      },
+      include: [{model: Art}]
+    })
+
+    console.log('data being returned ', userOrder)
+    res.json(userOrder)
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.put('/cart', async (req, res, next) => {
   try {
     const carts = await Order.findOne({
@@ -82,7 +132,7 @@ router.put('/add/:artId', async (req, res, next) => {
 
     //user ---> order <---> item
 
-    res.json(order)
+    res.json(artItem)
   } catch (error) {
     next(error)
   }
