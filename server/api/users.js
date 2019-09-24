@@ -41,3 +41,18 @@ router.get('/:id', isUserAccessGranted, async (req, res, next) => {
     next(error)
   }
 })
+
+router.post('/:id', isUserAccessGranted, async (req, res, next) => {
+  try {
+    const users = await User.findOne({
+      where: {
+        id: req.user.id
+      },
+      attributes: ['id', 'name', 'email', 'address', 'googleId', 'userImage']
+    })
+    users.update({name: req.body.name, address: req.body.address})
+    res.json(users)
+  } catch (error) {
+    next(error)
+  }
+})
