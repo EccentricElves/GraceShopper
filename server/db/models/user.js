@@ -35,11 +35,17 @@ const User = db.define('user', {
     }
   },
   googleId: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    get() {
+      return () => this.googleId
+    }
   },
   securityClearance: {
     type: Sequelize.ENUM('user', 'admin'),
-    defaultValue: 'user'
+    defaultValue: 'user',
+    get() {
+      return () => this.securityClearance
+    }
   }
 })
 

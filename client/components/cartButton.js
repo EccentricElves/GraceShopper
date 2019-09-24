@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {toastr} from 'react-redux-toastr'
+import {toast} from 'react-toastify'
 
 import {addArt} from '../store/cartReducer'
 
@@ -12,7 +12,12 @@ class DisconnectedCartButton extends Component {
 
   handleOnClick() {
     this.props.addToCart(this.props.productId)
-    toastr.success('Nice!', 'You have added an Item to your Cart')
+    toast.success('Item Added To Cart', {
+      position: 'top-right',
+      autoClose: 3000,
+      closeOnClick: true,
+      hideProgressBar: true
+    })
     this.coinSoundFunc()
   }
 

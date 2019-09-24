@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 import {Router} from 'react-router-dom'
-import ReduxToastr from 'react-redux-toastr'
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
 import history from './history'
 import store from './store'
 import App from './app'
@@ -15,15 +16,7 @@ ReactDOM.render(
     <Router history={history}>
       <App className="main" />
     </Router>
-    <ReduxToastr
-      timeOut={4000}
-      newestOnTop={false}
-      preventDuplicates
-      position="bottom-right"
-      transitionIn="fadeIn"
-      transitionOut="fadeOut"
-      closeOnToastrClick
-    />
+    <ToastContainer className="toast-container" />
   </Provider>,
   document.getElementById('app')
 )
