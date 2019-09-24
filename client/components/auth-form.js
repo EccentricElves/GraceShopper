@@ -74,14 +74,17 @@ const mapDispatch = dispatch => {
       const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
-      if (!(EMAIL_RE.test(email) && toast.isActive('InvalidEmailIsActive'))) {
-        toast.error('Invalid Email Address', {
-          position: 'top-left',
-          autoClose: false,
-          closeOnClick: false,
-          hideProgressBar: true,
-          toastId: 'InvalidEmailIsActive'
-        })
+      if (!EMAIL_RE.test(email)) {
+        if (!toast.isActive('InvalidEmailIsActive')) {
+          toast.error('Invalid Email Address', {
+            position: 'top-left',
+            autoClose: false,
+            closeOnClick: false,
+            hideProgressBar: true,
+            toastId: 'InvalidEmailIsActive'
+          })
+        }
+        return
       }
       dispatch(auth(email, password, formName))
     },
