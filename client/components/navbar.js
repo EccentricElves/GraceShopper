@@ -43,14 +43,6 @@ const Navbar = ({handleClick, isLoggedIn, email, name, cartCount}) => {
             <Switch />
           </div>
         )}
-        <Link to="/cart">
-          <img
-            src="  /images/cart.png"
-            alt="Cart Image"
-            className="cartButton"
-          />
-          <div id="cartCount">{cartCount}</div>
-        </Link>
         <div>
           <Link to="/orderHistory" className="link">
             order history
@@ -61,6 +53,7 @@ const Navbar = ({handleClick, isLoggedIn, email, name, cartCount}) => {
               alt="Cart Image"
               className="cartButton"
             />
+            <div id="cartCount">{cartCount}</div>
           </Link>
         </div>
       </nav>
