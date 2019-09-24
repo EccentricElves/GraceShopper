@@ -47,7 +47,7 @@ const Navbar = ({handleClick, isLoggedIn, email, name, cartCount}) => {
             alt="Cart Image"
             className="cartButton"
           />
-          {cartCount}
+          <div id="cartCount">{cartCount}</div>
         </Link>
       </nav>
       <hr />
