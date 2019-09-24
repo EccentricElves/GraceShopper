@@ -7,13 +7,9 @@ import Checkout from './checkout'
 import RemoveButton from './removeCartItem'
 
 class DisconnectedCart extends React.Component {
-  constructor() {
-    super()
-  }
   componentDidMount() {
     this.props.getCart()
   }
-  removeItem(id) {}
   handleSubmit() {
     this.props.checkOut()
   }
