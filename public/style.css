@@ -165,3 +165,7 @@ body {
   font-family: hobbithand;
   src: url('./fonts/hobbitonbrushhand.ttf');
 }
+
+.toast-container button {
+  width: 50px;
+}

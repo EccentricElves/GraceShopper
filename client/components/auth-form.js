@@ -1,13 +1,19 @@
+/* eslint-disable no-lonely-if */
 import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
+import {toast} from 'react-toastify'
 import {auth} from '../store'
 
 /**
  * COMPONENT
  */
+
+// https://emailregex.com/
+const EMAIL_RE = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
 const AuthForm = props => {
-  const {name, displayName, handleSubmit, error} = props
+  const {name, displayName, handleSubmit, error, handleOnChange} = props
 
   return (
     <div>
@@ -16,7 +22,7 @@ const AuthForm = props => {
           <label htmlFor="email">
             <small className="bilbosmall">Email</small>
           </label>
-          <input name="email" type="text" />
+          <input name="email" onChange={handleOnChange} type="text" />
         </div>
         <div>
           <label htmlFor="password">
@@ -68,7 +74,41 @@ const mapDispatch = dispatch => {
       const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
+      if (!(EMAIL_RE.test(email) && toast.isActive('InvalidEmailIsActive'))) {
+        toast.error('Invalid Email Address', {
+          position: 'top-left',
+          autoClose: false,
+          closeOnClick: false,
+          hideProgressBar: true,
+          toastId: 'InvalidEmailIsActive'
+        })
+      }
       dispatch(auth(email, password, formName))
+    },
+
+    handleOnChange(evt) {
+      if (!EMAIL_RE.test(evt.target.value)) {
+        if (!toast.isActive('InvalidEmailIsActive')) {
+          toast.dismiss('ValidEmailIsActive')
+          toast.error('Invalid Email Address', {
+            position: 'top-left',
+            autoClose: false,
+            closeOnClick: false,
+            hideProgressBar: true,
+            toastId: 'InvalidEmailIsActive'
+          })
+        }
+      } else {
+        if (!toast.isActive('ValidEmailIsActive')) {
+          toast.dismiss('InvalidEmailIsActive')
+          toast.success('Yiiiis This a good email address', {
+            position: 'top-left',
+            autoClose: false,
+            hideProgressBar: true,
+            toastId: 'ValidEmailIsActive'
+          })
+        }
+      }
     }
   }
 }
