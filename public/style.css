@@ -97,6 +97,16 @@ body {
 .login {
   display: flex;
   flex-direction: column;
+  width: 800px;
+  margin: 0;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  width: 600px;
   margin: 0;
 }
 .cartImage {
@@ -119,6 +129,7 @@ body {
   color: azure;
   font-family: hobbithand;
   font-size: 20pt;
+  align-items: flex-end;
 }
 
 .welcome {
@@ -143,6 +154,7 @@ body {
   color: white;
   font-family: hobbithand;
   font-size: 14pt;
+  width: 250px;
 }
 
 .singleArtFont {

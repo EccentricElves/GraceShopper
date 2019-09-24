@@ -10,6 +10,7 @@ import {
 } from './components'
 import thankYou from './components/thankYou'
 import Cart from './components/cart'
+import OrderHistory from './components/orderHistory'
 
 const App = () => {
   return (
@@ -25,6 +26,8 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/user" component={UserHome} />
+          <Route exact path="/orderhistory" component={OrderHistory} />
+
         </Switch>
       </div>
     </div>

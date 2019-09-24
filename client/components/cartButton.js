@@ -13,13 +13,30 @@ class DisconnectedCartButton extends Component {
   handleOnClick() {
     this.props.addToCart(this.props.productId)
     toastr.success('Nice!', 'You have added an Item to your Cart')
+    this.coinSoundFunc()
+  }
+
+  coinSoundFunc() {
+    document.getElementById('coinSound').play()
   }
 
   render() {
     return (
-      <button onClick={this.handleOnClick} className="hobbithandbutton">
-        ADD TO CART
-      </button>
+      <div>
+        <button
+          type="button"
+          onClick={this.handleOnClick}
+          className="hobbithandbutton"
+        >
+          ADD TO CART
+        </button>
+        <audio
+          id="coinSound"
+          src="sounds/smw_coin.wav"
+          // autoPlay="{false}"
+          type="audio/ogg"
+        />
+      </div>
     )
   }
 }
