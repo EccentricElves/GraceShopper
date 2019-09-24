@@ -88,4 +88,22 @@ router.put('/add/:artId', async (req, res, next) => {
   }
 })
 
+// /api/order/history
+// returns all the completed orders for the logged in user
+router.get('/history', async (req, res, next) => {
+  try {
+    const order = await Order.findAll({
+      where: {
+        userId: req.user.id,
+        status: 'completed'
+      },
+      include: [{model: Art}]
+    })
+
+    res.json(order)
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router
