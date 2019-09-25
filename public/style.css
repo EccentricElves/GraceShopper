@@ -22,6 +22,10 @@ nav a {
   display: inline-block;
   margin: 1em;
 }
+ul div {
+  font-family: fantasy;
+  font-size: 24px;
+}
 div {
   color: aliceblue;
 }
@@ -97,7 +101,20 @@ body {
 .login {
   display: flex;
   flex-direction: column;
+  width: 800px;
   margin: 0;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  width: 600px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  margin-inline-start: 0px;
 }
 .cartImage {
   width: 100%;
@@ -119,17 +136,33 @@ body {
   color: azure;
   font-family: hobbithand;
   font-size: 20pt;
+  align-items: flex-end;
+  margin-inline-start: 13px;
 }
-
+.editsave {
+  width: 250px;
+}
 .welcome {
   color: azure;
   font-family: bilbobold;
   font-size: 24pt;
+  margin-block-end: 0%;
 }
-
-.tengwarfont {
+.user {
+  margin-top: 0%;
+  margin-bottom: 4%;
+  justify-content: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: aliceblue;
+}
+.userNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.firstorderfont {
   color: white;
-  font-family: tengwar;
+  font-family: firstorder;
   font-size: 50pt;
 }
 
@@ -143,25 +176,48 @@ body {
   color: white;
   font-family: hobbithand;
   font-size: 14pt;
+  width: 250px;
 }
 
 .singleArtFont {
   color: white;
-  font-family: hobbithand;
-  font-size: 20pt;
+  font-family: elven;
+  font-size: 30pt;
 }
-
+.userPage {
+  display: flex;
+  flex-direction: row;
+}
 @font-face {
   font-family: bilbobold;
   src: url('./fonts/bilbobold.ttf');
 }
 
-@font-face {
+/* @font-face {
   font-family: tengwar;
   src: url('./fonts/TENGWAR3.ttf');
-}
+} */
 
 @font-face {
   font-family: hobbithand;
   src: url('./fonts/hobbitonbrushhand.ttf');
+}
+
+@font-face {
+  font-family: firstorder;
+  src: url('./fonts/firstorder.ttf');
+}
+
+@font-face {
+  font-family: elven;
+  src: url('./fonts/elvencommonspeak.ttf');
+}
+
+.toast-container button {
+  width: 50px;
+}
+
+.stripe_checkout {
+  width: 200px;
+  margin-inline-start: 13px;
 }

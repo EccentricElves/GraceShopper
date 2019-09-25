@@ -1,28 +1,23 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link, Redirect, Route} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {getCartThunk, checkOutThunk} from '../store/cartReducer'
-import thankYou from './thankYou'
 import Checkout from './checkout'
 import RemoveButton from './removeCartItem'
 
 class DisconnectedCart extends React.Component {
-  constructor() {
-    super()
-  }
   componentDidMount() {
     this.props.getCart()
   }
-  removeItem(id) {}
   handleSubmit() {
     this.props.checkOut()
   }
   render() {
     return this.props.cart ? (
       <div>
-        <h1 className="tengwarfont">Cart</h1>
-        {!this.props.cart.arts[0] ? (
-          <div className="tengwarfont">Cart Is Empty</div>
+        <h1 className="firstorderfont">Cart</h1>
+        {!this.props.cart.arts.length ? (
+          <div className="firstorderfont">Cart Is Empty</div>
         ) : (
           <div>
             {this.props.cart.arts.map(item => {
@@ -38,7 +33,7 @@ class DisconnectedCart extends React.Component {
             })}
           </div>
         )}
-        <div>
+        <div className="stripe_checkout">
           {this.props.isLoggedIn ? (
             <Checkout
               name="Checkout"
@@ -63,7 +58,7 @@ class DisconnectedCart extends React.Component {
         </div>
       </div>
     ) : (
-      <div />
+      <div className="firstorderfont">Cart Is Empty</div>
     )
   }
 }

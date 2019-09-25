@@ -15,6 +15,14 @@ const User = db.define('user', {
       isEmail: true
     }
   },
+  userImage: {
+    type: Sequelize.TEXT,
+    defaultValue:
+      'https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1',
+    validate: {
+      isUrl: true
+    }
+  },
   address: {
     type: Sequelize.TEXT
   },
@@ -35,11 +43,17 @@ const User = db.define('user', {
     }
   },
   googleId: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    get() {
+      return () => this.getDataValue('googleId')
+    }
   },
   securityClearance: {
     type: Sequelize.ENUM('user', 'admin'),
-    defaultValue: 'user'
+    defaultValue: 'user',
+    get() {
+      return () => this.getDataValue('securityClearance')
+    }
   }
 })
 
@@ -50,6 +64,10 @@ module.exports = User
  */
 User.prototype.correctPassword = function(candidatePwd) {
   return User.encryptPassword(candidatePwd, this.salt()) === this.password()
+}
+
+User.prototype.isAdmin = function() {
+  return this.securityClearance() === 'admin'
 }
 
 /**

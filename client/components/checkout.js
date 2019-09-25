@@ -2,11 +2,14 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import StripeCheckout from 'react-stripe-checkout'
+import {Redirect} from 'react-router-dom'
+import history from '../history'
 
 const CURRENCY = 'USD'
 
 const successPayment = data => {
   alert('Payment Successful')
+  history.push('/thankyou')
 }
 const errorPayment = data => {
   alert(data)
@@ -36,13 +39,8 @@ const Checkout = ({name, description, amount, handleCheckoutSuccess}) => {
         token={onToken(amount, description, handleCheckoutSuccess)}
         currency={CURRENCY}
         stripeKey="pk_test_Tm68jOcpaletOdKFzp80ochj00YAnOJpLE"
+        label="Pay with 💳"
       />
-
-      <Link to="/thankyou">
-        <button type="submit" onClick={() => this.handleSubmit()}>
-          Check Out
-        </button>
-      </Link>
     </div>
   )
 }
