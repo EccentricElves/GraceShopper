@@ -24,7 +24,7 @@ deploy: # see README for details on these keys
   skip_cleanup: true
   provider: heroku
   # app should be your heroku app name; see README
-  app: desolate-wave-29030
+  app: eccentric-elven-arts
   # the secure key indicates an encrypted value; see README
   api_key:
     secure: nAwWlzxjQi7xfgVgR3QZfiuVNDSpy/gFAx8P37EFbnyvN9Kg4fdin7zk9EOLGd41tyhBjKFJZX6nr/oGFdLvCM5cdQBkD6ArjGCtPfZ9AfxQ9F9GUOsj5v0z9Q1QWsX7ozaz1EceesAWilURKpdJDQxxqa1eSn7Oj5auU7WdBfZytiMGoBoiew1XoCA9zB+8x8Dk1xAoPd7czXWOjRehz4ooTo1uL93bmuNO6cpJu04d2XsZoD24HcRwmaDuoXFixtRs4Qxo5xEmF4lhcrbYLYcREc6PWVhaRfh/jj4L4Zs2r1LpHu6n8yHFSNtLE5yEpOM0dKpaxhrB3uTrB7E0GgTVNenVxxBgo1bgz7qXcQTHuOnvHL+f/QP+x1tsLpzg1dSKKvSHIvdBC1nPkOXKU6ukBRwbPWrs29T+BbUR1zOS4pJ9sGty02WcItV4JD4yoI1kkWX0obnrGbc7KqA5p+3hadhe4r8U7q/9WnMFbECZKeWsqShvhzsa6zUGbUfM/9BRDvrXoT3ZgWrisAccAnkxJTP+G7P552CbjwmkiARPXaQ5hdPVgbN2ufsL5VX24o2R7qxeL4TZP6ns/1b7asKyjtxwERSokJ6/u+KGC2G6sUjwLuHvfakQxALytGBXvlk60CnnRDdS0LtZnaxyzxqXSMtbu740pZlJ57PdW/s=
